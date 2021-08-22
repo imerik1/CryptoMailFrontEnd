@@ -1,0 +1,67 @@
+.container {
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 10px;
+    width: 100%;
+}
+
+.details {
+    max-width: 100%;
+    padding: 0 0 10px;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.245);
+    p {
+        max-width: 100%;
+    }
+}
+
+.sended {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    gap: 10px;
+    > img {
+        margin-top: 2px;
+    }
+}
+
+.deleteButton {
+    margin: 0 0 10px;
+    border: none;
+    font-size: 12px;
+    text-decoration: underline;
+    padding: 0;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: transparent;
+}
+
+.header {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.date {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    gap: 10px;
+    > img {
+        cursor: pointer;
+    }
+}
+
+.info {
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 10px;
+    max-width: 100%;
+    margin: 10px 0;
+    span {
+        display: flex;
+        flex-flow: column nowrap;
+        gap: 5px;
+    }
+}

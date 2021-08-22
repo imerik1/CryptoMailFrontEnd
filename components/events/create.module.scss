@@ -1,0 +1,38 @@
+.form {
+    display: flex;
+    flex-flow: column nowrap;
+    flex: 1;
+    margin-top: 60px;
+    align-items: center;
+    width: 100%;
+    gap: 20px;
+    input[type='email'] {
+        width: 100%;
+        max-width: 500px;
+        padding: 10px 20px;
+    }
+    textarea {
+        width: 100%;
+        max-width: 500px;
+        max-height: 171px;
+        padding: 10px 20px;
+        color: #101013;
+    }
+    input[type='submit'] {
+        margin: 20px auto;
+        padding: 5px 30px;
+        border-radius: 10px;
+        color: white;
+        font-weight: bold;
+        background-color: #187ec2;
+        cursor: pointer;
+    }
+}
+
+.success {
+    color: #8cb369;
+}
+
+.error {
+    color: #ed474a;
+}

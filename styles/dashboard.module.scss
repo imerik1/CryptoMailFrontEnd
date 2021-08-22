@@ -1,0 +1,73 @@
+.main {
+    display: grid;
+    grid-template-areas: 'aside content';
+    grid-template-columns: fit-content(100%) auto;
+    grid-template-rows: repeat(1, 100%);
+    section:nth-child(2) {
+        display: flex;
+        flex-flow: column nowrap;
+        padding-top: 20px;
+        padding-left: 20px;
+        grid-area: content;
+    }
+    @media screen and (max-width: 920px) {
+        grid-template-areas: 'aside' 'content';
+        grid-template-columns: auto;
+        grid-template-rows: repeat(2, auto);
+    }
+}
+
+.aside {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    border-right: 2px solid rgba(0, 0, 0, 0.245);
+    padding-right: 20px;
+    width: 100%;
+    grid-area: aside;
+    > button {
+        font-size: 14px;
+    }
+    @media screen and (max-width: 920px) {
+        display: flex;
+        flex-flow: row wrap;
+        border-right: none;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        border-bottom: 2px solid rgba(0, 0, 0, 0.245);
+        gap: 10px;
+        padding: 10px 0;
+    }
+}
+
+.createButton {
+    margin: 20px auto;
+    padding: 5px 30px;
+    border-radius: 10px;
+    color: white;
+    font-weight: bold;
+    background-color: #187ec2;
+    cursor: pointer;
+}
+
+.othersButton {
+    margin: 20px auto;
+    padding: 5px 30px;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: transparent;
+    @media screen and (max-width: 606px) {
+        padding: 0;
+        margin: 0;
+    }
+}
+
+.grade {
+    padding: 1px 0px;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.245);
+    @media screen and (max-width: 606px) {
+        border-bottom: none;
+    }
+}

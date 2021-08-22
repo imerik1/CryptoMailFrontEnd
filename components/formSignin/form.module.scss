@@ -1,0 +1,30 @@
+.form {
+    display: flex;
+    flex-flow: column nowrap;
+    width: 100%;
+    max-width: 500px;
+    gap: 20px;
+    input:not(input[type='submit']) {
+        padding: 10px;
+        border-radius: 5px;
+    }
+    > section {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-between;
+        gap: 10px;
+        > input {
+            flex: 1;
+            min-width: 200px;
+        }
+    }
+    input[type='submit'] {
+        margin: 20px auto;
+        padding: 5px 30px;
+        border-radius: 10px;
+        color: white;
+        font-weight: bold;
+        background-color: #187ec2;
+        cursor: pointer;
+    }
+}
