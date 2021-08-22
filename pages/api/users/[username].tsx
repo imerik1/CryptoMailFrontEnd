@@ -13,7 +13,7 @@ const SignIn = async (req: NextApiRequest, res: NextApiResponse) => {
     const { expire, key }: IAuth = decryptToken(token);
     const { username } = req.query;
     const now = date.format(new Date(), 'YYYY-MM-DD HH:mm:ss');
-    if (key !== process.env.NEXT_PUBLIC_KEY_AUTH?.toString())
+    if (key !== process.env.KEY_AUTH?.toString())
         return res.status(401).json(
             JSON.stringify({
                 status: 'UNAUTHORIZED',
@@ -33,7 +33,7 @@ const SignIn = async (req: NextApiRequest, res: NextApiResponse) => {
     header.set('Content-Type', 'application/json');
     header.set('Accept', 'application/json');
     const postUser = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/1.0/users/username/${username}`
+        `${process.env.API_URL}/1.0/users/username/${username}`
     );
     return res
         .status(postUser.status)

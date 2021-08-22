@@ -8,10 +8,10 @@ export interface IAuth {
 
 const createToken = () => {
     const token: IAuth = {
-        expire: date.format(date.addSeconds(new Date(), parseInt(process.env.NEXT_PUBLIC_SECONDS_AUTH!)), 'YYYY-MM-DD HH:mm:ss'),
-        key: process.env.NEXT_PUBLIC_KEY_AUTH
+        expire: date.format(date.addSeconds(new Date(), parseInt(process.env.SECONDS_AUTH!)), 'YYYY-MM-DD HH:mm:ss'),
+        key: process.env.KEY_AUTH
     }
-    const tokenCrypto: string = CryptoJS.AES.encrypt(JSON.stringify(token), process.env.NEXT_PUBLIC_KEY_CRYPTO!).toString();
+    const tokenCrypto: string = CryptoJS.AES.encrypt(JSON.stringify(token), process.env.KEY_CRYPTO!).toString();
     return tokenCrypto;
 }
 

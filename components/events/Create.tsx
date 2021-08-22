@@ -57,11 +57,7 @@ const Create: React.FC<IProps> = ({ user }: IProps) => {
                 <></>
             )}
             {useSuccess ? (
-                <p className={styles.success}>
-                    Mensagem enviada com sucesso.
-                    <br />
-                    Sua mensagem foi enviada assim: {useMessage}
-                </p>
+                <p className={styles.success}>Mensagem enviada com sucesso.</p>
             ) : (
                 <></>
             )}

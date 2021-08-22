@@ -13,7 +13,7 @@ const createEmail = async (req: NextApiRequest, res: NextApiResponse) => {
     const token = req.headers.authorization as string;
     const { expire, key }: IAuth = decryptToken(token);
     const now = date.format(new Date(), 'YYYY-MM-DD HH:mm:ss');
-    if (key !== process.env.NEXT_PUBLIC_KEY_AUTH?.toString())
+    if (key !== process.env.KEY_AUTH?.toString())
         return res.status(401).json(
             JSON.stringify({
                 status: 'UNAUTHORIZED',
@@ -32,14 +32,11 @@ const createEmail = async (req: NextApiRequest, res: NextApiResponse) => {
     const header = new Headers();
     header.set('Content-Type', 'application/json');
     header.set('Accept', 'application/json');
-    const postUser = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/1.0/emails`,
-        {
-            method: 'POST',
-            headers: header,
-            body: JSON.stringify(body),
-        }
-    );
+    const postUser = await fetch(`${process.env.API_URL}/1.0/emails`, {
+        method: 'POST',
+        headers: header,
+        body: JSON.stringify(body),
+    });
     if (postUser.status !== 204)
         return res
             .status(postUser.status)
