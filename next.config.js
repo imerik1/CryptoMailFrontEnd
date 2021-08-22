@@ -3,8 +3,8 @@ module.exports = {
   reactStrictMode: true,
   env: {
     API_URL: process.env.API_URL,
-    KEY_CRYPTO: process.env.KEY_CRYPTO,
-    KEY_AUTH: process.env.KEY_AUTH,
-    SECONDS_AUTH: process.env.SECONDS_AUTH,
+    KEY_CRYPTO: process.env.NEXT_PUBLIC_KEY_CRYPTO,
+    KEY_AUTH: process.env.NEXT_PUBLIC_KEY_AUTH,
+    SECONDS_AUTH: process.env.NEXT_PUBLIC_SECONDS_AUTH,
   },
 }
