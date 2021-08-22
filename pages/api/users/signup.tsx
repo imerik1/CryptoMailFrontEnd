@@ -28,6 +28,8 @@ const SignUp = async (req: NextApiRequest, res: NextApiResponse) => {
                 status: 'UNAUTHORIZED',
                 code: 401,
                 reason: 'O token está expirado.',
+                now: now,
+                expire: expire
             })
         );
     const header = new Headers();
