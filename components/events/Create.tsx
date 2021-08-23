@@ -14,8 +14,6 @@ interface IProps {
 const Create: React.FC<IProps> = ({ user }: IProps) => {
     const [useSuccess, setSuccess] = React.useState<boolean>(false);
     const [useError, setError] = React.useState<boolean>(false);
-    const [useErrors, setErrors] = React.useState<any[]>([]);
-    const [useMessage, setMessage] = React.useState<string>('');
     const handleSubmit = async (e: any) => {
         e.preventDefault();
         setError(false);
@@ -38,9 +36,13 @@ const Create: React.FC<IProps> = ({ user }: IProps) => {
         });
         if (fetchEmail.status === 204) {
             setSuccess(true);
-            setMessage(message);
         }
         if (fetchEmail.status !== 204) setError(true);
+        e.target.reset();
+        setInterval(() => {
+            setSuccess(false);
+            setError(false);
+        }, 5000);
     };
     return (
         <>
