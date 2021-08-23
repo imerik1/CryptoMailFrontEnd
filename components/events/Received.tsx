@@ -7,6 +7,7 @@ import moment from 'moment';
 import { IUser } from '../../types/Users';
 import createHeader from '../../utils/createHeader';
 import decryptEmail from '../../utils/decryptEmail';
+import divideCrypto from '../../utils/divideCrypto';
 import styles from './sended.module.scss';
 
 interface IProps {
@@ -62,7 +63,7 @@ const Received: React.FC<IProps> = ({ user }: IProps) => {
                 <div className={styles.date}>
                     <p>Atualizado às {useLastUpdate}</p>
                     <img
-                        src='https://lh3.googleusercontent.com/proxy/OhywHxjWBBqzLMfAS2d2raHk9ZBtQPyfDognEdhuKHQTbB6COV0L_umhbYtIlhBZB6xAF9SsDsiUZDHR17rzjkoC-yb4N0-5ug'
+                        src='/assets/refresh.png'
                         height='20'
                         onClick={Refresh}
                     />
@@ -82,6 +83,10 @@ const Received: React.FC<IProps> = ({ user }: IProps) => {
                                     )}
                                 </summary>
                                 <div className={styles.info}>
+                                    <span>
+                                        <b>Mensagem criptografada:</b>
+                                        {divideCrypto(email.data.message)}
+                                    </span>
                                     <span>
                                         <b>Mensagem descriptografada:</b>{' '}
                                         {decryptEmail(
