@@ -12,7 +12,14 @@ const Sended = async (req: NextApiRequest, res: NextApiResponse) => {
     const token = req.headers.authorization as string;
     const { expire, key }: IAuth = decryptToken(token);
     const { email } = req.query;
-    const now = date.format(new Date(), 'YYYY-MM-DD HH:mm:ss');
+    const now = date.format(
+        new Date(
+            new Date().toLocaleDateString('en-US', {
+                timeZone: 'America/Sao_Paulo',
+            })
+        ),
+        'YYYY-MM-DD HH:mm:ss'
+    );
     if (key !== process.env.KEY_AUTH?.toString())
         return res.status(401).json(
             JSON.stringify({
