@@ -8,7 +8,7 @@ export interface IAuth {
 
 const createToken = () => {
     const token: IAuth = {
-        expire: date.format(date.addSeconds(new Date(new Date().toLocaleDateString('en-US', {
+        expire: date.format(date.addSeconds(new Date(new Date().toLocaleString('en-US', {
             timeZone: 'America/Sao_Paulo',
         })), parseInt(process.env.NEXT_PUBLIC_SECONDS_AUTH!.toString())), 'YYYY-MM-DD HH:mm:ss'),
         key: process.env.NEXT_PUBLIC_KEY_AUTH

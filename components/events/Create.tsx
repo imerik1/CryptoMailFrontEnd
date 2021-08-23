@@ -42,7 +42,7 @@ const Create: React.FC<IProps> = ({ user }: IProps) => {
         setInterval(() => {
             setSuccess(false);
             setError(false);
-        }, 5000);
+        }, 3000);
     };
     return (
         <>

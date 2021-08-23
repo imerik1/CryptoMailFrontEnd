@@ -6,7 +6,7 @@ import { useCookies } from 'react-cookie';
 import Form from '../components/formSignup/Form';
 import Header from '../components/header/Header';
 import styles from '../styles/signup.module.scss';
-import parseCookies from '../utils/pasrseCookies';
+import parseCookies from '../utils/parseCookies';
 
 const SignUp: NextPage = () => {
     const [cookies, setCookie, removeCookie] = useCookies(['user']);

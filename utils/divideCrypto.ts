@@ -5,7 +5,6 @@ const divideCrypto = (token: any | string) => {
     var max: number = parts;
     for (let index in token) {
         let char = parseInt(index)
-        console.log(max, char)
         if (max === char) {
             max = max + parts;
             final = final + " ";

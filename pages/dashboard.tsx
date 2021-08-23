@@ -12,7 +12,7 @@ import Logout from '../components/Logout';
 import styles from '../styles/dashboard.module.scss';
 import { IUser } from '../types/Users';
 import decryptUser from '../utils/decryptUser';
-import parseCookies from '../utils/pasrseCookies';
+import parseCookies from '../utils/parseCookies';
 
 const Dashboard: NextPage = ({ data }: any) => {
     const [useUser, setUser] = React.useState<IUser>(decryptUser(data.user));
