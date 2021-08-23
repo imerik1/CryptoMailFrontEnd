@@ -15,7 +15,7 @@ const SignUp = async (req: NextApiRequest, res: NextApiResponse) => {
     const { expire, key }: IAuth = decryptToken(token);
     const now = date.format(
         new Date(
-            new Date().toLocaleDateString('en-US', {
+            new Date().toLocaleString('en-US', {
                 timeZone: 'America/Sao_Paulo',
             })
         ),

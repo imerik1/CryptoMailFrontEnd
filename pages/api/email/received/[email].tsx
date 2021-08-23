@@ -14,7 +14,7 @@ const Received = async (req: NextApiRequest, res: NextApiResponse) => {
     const { email } = req.query;
     const now = date.format(
         new Date(
-            new Date().toLocaleDateString('en-US', {
+            new Date().toLocaleString('en-US', {
                 timeZone: 'America/Sao_Paulo',
             })
         ),

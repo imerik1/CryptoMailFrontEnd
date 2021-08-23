@@ -34,11 +34,11 @@ const Received: React.FC<IProps> = ({ user }: IProps) => {
     const [useLastUpdate, setLastUpdate] = React.useState<string>(
         date.format(
             new Date(
-                new Date().toLocaleDateString('en-US', {
+                new Date().toLocaleString('en-US', {
                     timeZone: 'America/Sao_Paulo',
                 })
             ),
-            'YYYY-MM-DD HH:mm:ss'
+            'HH:mm:ss'
         )
     );
     const [useRefresh, setRefresh] = React.useState<boolean>(true);
@@ -55,11 +55,11 @@ const Received: React.FC<IProps> = ({ user }: IProps) => {
         setLastUpdate(
             date.format(
                 new Date(
-                    new Date().toLocaleDateString('en-US', {
+                    new Date().toLocaleString('en-US', {
                         timeZone: 'America/Sao_Paulo',
                     })
                 ),
-                'YYYY-MM-DD HH:mm:ss'
+                'HH:mm:ss'
             )
         );
         setRefresh(false);
