@@ -105,7 +105,7 @@ const Sended: React.FC<IProps> = ({ user }: IProps) => {
                                     </span>
                                     <span>
                                         <b>Sua senha</b>
-                                        {email.key.replace('-', ' ')}
+                                        {email.key.replaceAll('-', ' ')}
                                     </span>
                                     <span>
                                         <b>Mensagem descriptografada:</b>{' '}
