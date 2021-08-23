@@ -45,8 +45,17 @@ const Received: React.FC<IProps> = ({ user }: IProps) => {
                 }
             });
         });
+        setLastUpdate(
+            date.format(
+                new Date(
+                    new Date().toLocaleDateString('en-US', {
+                        timeZone: 'America/Sao_Paulo',
+                    })
+                ),
+                'HH:mm:ss'
+            )
+        );
         setRefresh(false);
-        setLastUpdate(date.format(new Date(), 'HH:mm:ss'));
     };
     React.useEffect(() => {
         getEmails();
