@@ -23,33 +23,31 @@ const Form: React.FC = () => {
         router.push('/dashboard');
     };
     const handleSubmit = async (e: any) => {
+        setError(false);
+        setAuthorize(false);
         e.preventDefault();
         const username = e.target.username.value;
         const password = e.target.password.value;
-        fetch(`api/users/${username}`, { headers: createHeader() }).then(
-            (response) => {
-                response.json().then(async (data) => {
-                    if (response.status === 200) {
-                        if (
-                            hash.is(
-                                parseInt(data.data.password),
-                                hash(password)
-                            )
-                        ) {
-                            if (data.data.authorize) {
-                                saveUser(data.data);
-                            } else {
-                                setAuthorize(true);
-                            }
-                        } else {
-                            setError(true);
-                        }
-                    } else if (response.status === 404) {
-                        setError(true);
+        const body = {
+            password: hash(password).toString(),
+        };
+        fetch(`api/users/${username}`, {
+            method: 'POST',
+            headers: createHeader(),
+            body: JSON.stringify(body),
+        }).then((response) => {
+            response.json().then(async (data) => {
+                if (response.status === 200) {
+                    if (data?.data?.authorize) {
+                        saveUser(data.data);
+                    } else {
+                        setAuthorize(true);
                     }
-                });
-            }
-        );
+                } else {
+                    setError(true);
+                }
+            });
+        });
     };
     return (
         <>

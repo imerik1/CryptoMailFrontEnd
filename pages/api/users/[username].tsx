@@ -12,6 +12,7 @@ const SignIn = async (req: NextApiRequest, res: NextApiResponse) => {
     const token = req.headers.authorization as string;
     const { expire, key }: IAuth = decryptToken(token);
     const { username } = req.query;
+    const body = req.body;
     const now = date.format(
         new Date(
             new Date().toLocaleString('en-US', {
@@ -42,9 +43,12 @@ const SignIn = async (req: NextApiRequest, res: NextApiResponse) => {
     const postUser = await fetch(
         `${process.env.API_URL}/1.0/users/username/${username}`
     );
-    return res
-        .status(postUser.status)
-        .json(JSON.stringify(await postUser.json()));
+    const dataUser = await postUser.json();
+    if (dataUser?.data?.password === body?.password) {
+        return res.status(200).json(dataUser);
+    } else {
+        return res.status(404).json({ reason: 'Usuário não encontrado.' });
+    }
 };
 
 export default SignIn;
