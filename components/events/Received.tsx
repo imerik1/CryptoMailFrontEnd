@@ -32,7 +32,14 @@ interface Email {
 const Received: React.FC<IProps> = ({ user }: IProps) => {
     const [useEmails, setEmails] = React.useState<Email[] | null>();
     const [useLastUpdate, setLastUpdate] = React.useState<string>(
-        date.format(new Date(), 'HH:mm:ss')
+        date.format(
+            new Date(
+                new Date().toLocaleDateString('en-US', {
+                    timeZone: 'America/Sao_Paulo',
+                })
+            ),
+            'YYYY-MM-DD HH:mm:ss'
+        )
     );
     const [useRefresh, setRefresh] = React.useState<boolean>(true);
     const getEmails = () => {
@@ -52,7 +59,7 @@ const Received: React.FC<IProps> = ({ user }: IProps) => {
                         timeZone: 'America/Sao_Paulo',
                     })
                 ),
-                'HH:mm:ss'
+                'YYYY-MM-DD HH:mm:ss'
             )
         );
         setRefresh(false);
