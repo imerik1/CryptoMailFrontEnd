@@ -28,6 +28,9 @@ SignUp.getInitialProps = async ({ req, res }) => {
             res?.writeHead(301, { Location: '/dashboard' }).end();
         }
     }
+    return {
+        data: data && data,
+    };
 };
 
 export default SignUp;
