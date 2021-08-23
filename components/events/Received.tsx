@@ -34,20 +34,26 @@ const Received: React.FC<IProps> = ({ user }: IProps) => {
         date.format(new Date(), 'HH:mm:ss')
     );
     const [useRefresh, setRefresh] = React.useState<boolean>(true);
-    React.useEffect(() => {
+    const getEmails = () => {
         fetch(`api/email/received/${user.email}`, {
             headers: createHeader(),
         }).then((responses) => {
             responses.json().then((data) => {
-                setEmails(data.data.reverse());
+                if (data.data) {
+                    setEmails(data.data.reverse());
+                }
             });
         });
         setRefresh(false);
-    }, [useRefresh]);
+        setLastUpdate(date.format(new Date(), 'HH:mm:ss'));
+    };
+    React.useEffect(() => {
+        getEmails();
+    }, []);
     const Refresh = (e: any) => {
         e.preventDefault();
-        setRefresh(!useRefresh);
-        setLastUpdate(date.format(new Date(), 'HH:mm:ss'));
+        setRefresh(true);
+        getEmails();
     };
     return (
         <section className={styles.container}>

@@ -55,25 +55,31 @@ const Form: React.FC = () => {
 
     return (
         <>
-            <h1>Registrar-se</h1>
             {useSucess ? (
                 <>
                     <h2 className={styles.success}>
-                        Usuário cadastrado com sucesso.
+                        Caso seu e-mail esteja correto, um link de confirmação
+                        será enviado para esse e-mail para ativar sua conta,
+                        caso seu e-mail esteja incorreto, espere 6 horas para
+                        tentar novamente.
                     </h2>
+                    <Link passHref={true} href='/'>
+                        Voltar para o ínicio
+                    </Link>
                 </>
             ) : (
-                <></>
+                <>
+                    <h1>Registrar-se</h1>
+                    <form className={styles.form} onSubmit={handleSubmit}>
+                        <Username />
+                        <Password />
+                        <Email />
+                        <input type='submit' value='Registrar' />
+                    </form>
+                </>
             )}
-            <form className={styles.form} onSubmit={handleSubmit}>
-                <Username />
-                <Password />
-                <Email />
-                <input type='submit' value='Registrar' />
-            </form>
-
             {React.useMemo(() => {
-                if (useErrors.length !== 0)
+                if (useErrors.length > 0) {
                     return (
                         <ul className={styles.error}>
                             {useErrors.map((error: string, index: number) => {
@@ -81,16 +87,8 @@ const Form: React.FC = () => {
                             })}
                         </ul>
                     );
+                }
             }, [useErrors])}
-            {useSucess ? (
-                <>
-                    <Link passHref={true} href='/'>
-                        Voltar para o ínicio
-                    </Link>
-                </>
-            ) : (
-                <></>
-            )}
         </>
     );
 };

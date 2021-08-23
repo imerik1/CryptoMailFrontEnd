@@ -11,6 +11,7 @@ import styles from './form.module.scss';
 
 const Form: React.FC = () => {
     const [useError, setError] = React.useState<boolean>(false);
+    const [useAuthorize, setAuthorize] = React.useState<boolean>(false);
     const [useCookie, setCookie] = useCookies(['user']);
     const router = useRouter();
     const saveUser = (data: Object) => {
@@ -35,7 +36,11 @@ const Form: React.FC = () => {
                                 hash(password)
                             )
                         ) {
-                            saveUser(data.data);
+                            if (data.data.authorize) {
+                                saveUser(data.data);
+                            } else {
+                                setAuthorize(true);
+                            }
                         } else {
                             setError(true);
                         }
@@ -50,6 +55,7 @@ const Form: React.FC = () => {
         <>
             <h1>Fazer login</h1>
             {useError ? <p>Usuário ou senha incorreta.</p> : <></>}
+            {useAuthorize ? <p>Você ainda não confirmou seu e-mail.</p> : <></>}
             <form onSubmit={handleSubmit} className={styles.form}>
                 <input
                     id='username'
