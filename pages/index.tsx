@@ -1,5 +1,6 @@
 import type { NextPage } from 'next';
 import { useRouter } from 'next/dist/client/router';
+import Head from 'next/head';
 
 import Form from '../components/formSignin/Form';
 import Header from '../components/header/Header';
@@ -13,6 +14,9 @@ const Home: NextPage = ({ data }: any) => {
     }
     return (
         <>
+            <Head>
+                <title>Página inicial</title>
+            </Head>
             <Header />
             <main className={styles.main}>
                 <Form />

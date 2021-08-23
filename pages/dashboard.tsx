@@ -2,6 +2,7 @@ import React from 'react';
 
 import { NextPage } from 'next';
 import { useRouter } from 'next/dist/client/router';
+import Head from 'next/head';
 
 import Create from '../components/events/Create';
 import Received from '../components/events/Received';
@@ -19,6 +20,9 @@ const Dashboard: NextPage = ({ data }: any) => {
     const router = useRouter();
     return (
         <>
+            <Head>
+                <title>Dashboard | {useUser.username}</title>
+            </Head>
             <Header nav={<Logout />} email={useUser.email} />
             <main className={styles.main}>
                 <aside className={styles.aside}>

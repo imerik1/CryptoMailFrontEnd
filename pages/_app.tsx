@@ -3,6 +3,7 @@ import '../styles/global.scss';
 import React from 'react';
 
 import type { AppProps } from 'next/app';
+import Head from 'next/head';
 import { CookiesProvider } from 'react-cookie';
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -21,6 +22,12 @@ function MyApp({ Component, pageProps }: AppProps) {
     }, []);
     return (
         <CookiesProvider>
+            <Head>
+                <meta
+                    name='viewport'
+                    content='initial-scale=1.0, width=device-width'
+                />
+            </Head>
             <div className={`${useTheme} AppTheme`}>
                 <Component {...pageProps} />
             </div>
