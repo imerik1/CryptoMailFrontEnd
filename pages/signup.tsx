@@ -5,8 +5,14 @@ import Form from '../components/formSignup/Form';
 import Header from '../components/header/Header';
 import styles from '../styles/signup.module.scss';
 import parseCookies from '../utils/pasrseCookies';
+import { useCookies } from 'react-cookie';
+import { useRouter } from 'next/dist/client/router';
 
 const SignUp: NextPage = () => {
+    const [cookies, setCookie, removeCookie] = useCookies(['user']);
+    if (cookies.user) {
+        router.push('/dashboard');
+    }
     return (
         <>
             <Head>
